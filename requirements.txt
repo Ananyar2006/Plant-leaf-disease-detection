@@ -1,4 +1,7 @@
-Flask
+flask
 opencv-python
 numpy
 joblib
+scikit-learn==1.2.2
+pytest
+flake8
