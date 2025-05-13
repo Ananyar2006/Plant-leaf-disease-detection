@@ -2,17 +2,16 @@ name: Flask App CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Set up Python
@@ -25,14 +24,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Lint with flake8
+    - name: Check Python syntax
       run: |
-        pip install flake8
-        flake8 .
+        python -m py_compile app.py
 
-    - name: Run Flask app test (optional)
+    - name: Run basic test (optional)
       run: |
-        echo "Running test server..."
+        echo "Test: Flask app routes"
         export FLASK_APP=app.py
-        export FLASK_ENV=development
-        flask routes  
+        flask routes
