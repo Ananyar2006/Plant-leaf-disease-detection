@@ -1,0 +1,39 @@
+name: Plant Disease Detection CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest flake8
+
+      - name: Lint with flake8
+        run: |
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+      - name: Run unit tests
+        run: |
+          pytest tests/
+
+      - name: Check model files
+        run: |
+          test -f model/plant_disease_multiclass_model.pkl || (echo "Missing plant_disease_multiclass_model.pkl" && exit 1)
+          test -f model/label_dict.pkl || (echo "Missing label_dict.pkl" && exit 1)
