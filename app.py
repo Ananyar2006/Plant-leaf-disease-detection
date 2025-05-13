@@ -43,7 +43,7 @@ def index():
 
             # More reliable check for healthy label
             if label.lower().endswith('___healthy'):
-                result = "Healthy Leaf ✅"
+                result = "Healthy Leaf "
             else:
                 result = "Diseased Leaf "
 
