@@ -45,7 +45,7 @@ def index():
             if label.lower().endswith('___healthy'):
                 result = "Healthy Leaf ✅"
             else:
-                result = "Diseased Leaf ❌"
+                result = "Diseased Leaf "
 
     return render_template('index.html', result=result, image_filename=image_filename)
 
