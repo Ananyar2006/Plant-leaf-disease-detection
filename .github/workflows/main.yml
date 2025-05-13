@@ -1,4 +1,4 @@
-name: Plant Disease Detection CI
+name: Leaf Disease Detection CI
 
 on:
   push:
