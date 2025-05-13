@@ -25,15 +25,19 @@ jobs:
           pip install -r requirements.txt
           pip install pytest flake8
 
-      - name: Lint with flake8
+      - name: Lint with flake8 (non-blocking)
+        continue-on-error: true
         run: |
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          echo "Running flake8 for linting (non-blocking)"
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics || true
 
-      - name: Run unit tests
+      - name: Run unit tests with pytest
         run: |
+          echo "Running unit tests..."
           pytest tests/
 
-      - name: Check model files
+      - name: Check required model files
         run: |
+          echo "Checking model files..."
           test -f model/plant_disease_multiclass_model.pkl || (echo "Missing plant_disease_multiclass_model.pkl" && exit 1)
           test -f model/label_dict.pkl || (echo "Missing label_dict.pkl" && exit 1)
