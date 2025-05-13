@@ -1,7 +1,6 @@
-flask
-opencv-python
-numpy
+Flask
 joblib
-scikit-learn==1.2.2
+opencv-python-headless
+numpy
 pytest
-flake8
+scikit-learn==1.2.2
