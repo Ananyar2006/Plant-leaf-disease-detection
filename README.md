@@ -38,7 +38,7 @@ This full-stack web application detects whether a plant leaf is healthy or disea
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Layer      | Technology |
 |------------|------------|
@@ -52,7 +52,6 @@ This full-stack web application detects whether a plant leaf is healthy or disea
 
 ## Testing
 
-- GitHub Actions workflow for automated testing
 - Artifacts include:
   - Test Plan
   - Traceability Matrix
@@ -60,10 +59,3 @@ This full-stack web application detects whether a plant leaf is healthy or disea
 
 ---
 
-## Installation
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/your-username/plant-leaf-detection
-cd plant-leaf-detection
